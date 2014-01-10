@@ -15,6 +15,23 @@
  * 
  */
 
+/**
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * 
+ */
+
 package autosaveworld.commands;
 
 import java.io.File;
@@ -76,28 +93,28 @@ public class CommandsHandler implements CommandExecutor {
 			//"autosaveworld" command handler
 			if (args.length == 1 && args[0].equalsIgnoreCase("help")) {
 				// help
-				plugin.sendMessage(sender, "&f/asw help&7 - &3Shows this help");
-				plugin.sendMessage(sender, "&f/asw serverstatus&7 - &3Shows cpu,memory,HDD usage");
-				plugin.sendMessage(sender, "&f/asw forcegc&7 - &3Forces garbage collection");
-				plugin.sendMessage(sender, "&f/asw pmanager load {pluginname}&7 - &3Loads plugin {pluginname}");
-				plugin.sendMessage(sender, "&f/asw pmanager unload {pluginname}&7 - &3Unloads plugin {pluginname}");
-				plugin.sendMessage(sender, "&f/asw pmanager reload {pluginname}&7 - &3Reloads(unloads and then loads) plugin {pluginname}");
-				plugin.sendMessage(sender, "&f/asw save&7 - &3Saves all worlds and players");
-				plugin.sendMessage(sender, "&f/save&7 - &3Same as /asw save");
-				plugin.sendMessage(sender, "&f/asw backup&7 - &3Backups worlds defined in config.yml (* - all worlds) and plugins (if enabled in config)");
-				plugin.sendMessage(sender, "&f/backup&7 - &3Same as /asw backup");
-				plugin.sendMessage(sender, "&f/asw purge&7 - &3Purges plugins info from inactive players");
-				plugin.sendMessage(sender, "&f/purge&7 - &3Same as /asw purge");
-				plugin.sendMessage(sender, "&f/asw restart&7 - &3Restarts server");
-				plugin.sendMessage(sender, "&f/asw regenworld {world}&7 - &3Regenerates world");
-				plugin.sendMessage(sender, "&f/asw reload&7 - &3Reload all configs)");
-				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Reload plugin config (config.yml)");
-				plugin.sendMessage(sender, "&f/asw reloadmsg&7 - &3Reload message config (configmsg.yml)");
-				plugin.sendMessage(sender, "&f/asw locale&7 - &3Show current messages locale");
-				plugin.sendMessage(sender, "&f/asw locale available&7 - &3Show available messages locales");
-				plugin.sendMessage(sender, "&f/asw locale load {locale}&7 - &3Set meesages locale to one of the available locales");
-				plugin.sendMessage(sender, "&f/asw info&7 - &3Shows some info");
-				plugin.sendMessage(sender, "&f/asw version&7 - &3Shows plugin version");
+				plugin.sendMessage(sender, "&f/asw help&7 - &3Показывает все команды");
+				plugin.sendMessage(sender, "&f/asw serverstatus&7 - &3Показывает CPU,RAM,HDD загрузку");
+				plugin.sendMessage(sender, "&f/asw forcegc&7 - &3Начинает сборку мусора");
+				plugin.sendMessage(sender, "&f/asw pmanager load {pluginname}&7 - &3Загружает плагин {pluginname}");
+				plugin.sendMessage(sender, "&f/asw pmanager unload {pluginname}&7 - &3Выгружает плагин {pluginname}");
+				plugin.sendMessage(sender, "&f/asw pmanager reload {pluginname}&7 - &3Перезагружает (unload затем load) плагин {pluginname}");
+				plugin.sendMessage(sender, "&f/asw save&7 - &3Сохраняет все миры и игроков");
+				plugin.sendMessage(sender, "&f/save&7 - &3То же, что /asw save");
+				plugin.sendMessage(sender, "&f/asw backup&7 - &3Бекапит миры из config.yml (* - все миры) и плагиы (если указаны)");
+				plugin.sendMessage(sender, "&f/backup&7 - &3То же, что /asw backup");
+				plugin.sendMessage(sender, "&f/asw purge&7 - &3Отчищает информацию из плагинов о неактивных игроках");
+				plugin.sendMessage(sender, "&f/purge&7 - &3То же, что /asw purge");
+				plugin.sendMessage(sender, "&f/asw restart&7 - &3Перезагружает сервер");
+				plugin.sendMessage(sender, "&f/asw regenworld {world}&7 - &3Регенерирует мир");
+				plugin.sendMessage(sender, "&f/asw reload&7 - &3Перезагружает все конфиги :)");
+				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Перезагружает (config.yml)");
+				plugin.sendMessage(sender, "&f/asw reloadmsg&7 - &3Перезагружает (configmsg.yml)");
+				plugin.sendMessage(sender, "&f/asw locale&7 - &3Показывает текущий язык плагина");
+				plugin.sendMessage(sender, "&f/asw locale available&7 - &3Показывает доступные языки");
+				plugin.sendMessage(sender, "&f/asw locale load {locale}&7 - &3Устанавливает язык плагина");
+				plugin.sendMessage(sender, "&f/asw info&7 - &3Немного информации о плагине");
+				plugin.sendMessage(sender, "&f/asw version&7 - &3Показывает версию плагина");
 				return true;
 			} else if (args.length >= 3 && args[0].equalsIgnoreCase("pmanager")) {
 				String[] nameArray = Arrays.copyOfRange(args, 2, args.length);
@@ -111,10 +128,10 @@ public class CommandsHandler implements CommandExecutor {
 				plugin.pmanager.handlePluginManagerCommand(sender, args[1], sb.toString());
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("forcegc")) {
-				plugin.sendMessage(sender, "&9Forcing GC");
+				plugin.sendMessage(sender, "&9Наинаю GC");
 				System.gc();
 				System.gc();
-				plugin.sendMessage(sender, "&9GC probably finished");
+				plugin.sendMessage(sender, "&9GC вероятно завершено");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("serverstatus")) {
 				DecimalFormat df = new DecimalFormat("0.00");
@@ -123,21 +140,21 @@ public class CommandsHandler implements CommandExecutor {
 					com.sun.management.OperatingSystemMXBean systemBean = (com.sun.management.OperatingSystemMXBean) java.lang.management.ManagementFactory.getOperatingSystemMXBean();
 					double cpuusage = systemBean.getProcessCpuLoad()*100;
 					if (cpuusage > 0) {
-						sender.sendMessage(ChatColor.GOLD+"Cpu usage: "+ChatColor.RED+df.format(cpuusage)+"%");
+						sender.sendMessage(ChatColor.GOLD+"CPU: "+ChatColor.RED+df.format(cpuusage)+"%");
 					} else {
-						sender.sendMessage(ChatColor.GOLD+"Cpu usage: "+ChatColor.RED+"not available");
+						sender.sendMessage(ChatColor.GOLD+"CPU: "+ChatColor.RED+"not available");
 					}
 				} catch (Exception e) {}
 				//memory
 				Runtime runtime = Runtime.getRuntime();
 				long maxmemmb = runtime.maxMemory()/1024/1024;
 				long freememmb = (runtime.maxMemory()-(runtime.totalMemory()-runtime.freeMemory()))/1024/1024;
-				sender.sendMessage(ChatColor.GOLD+"Memory usage: "+ChatColor.RED+df.format((maxmemmb-freememmb)*100/maxmemmb)+"% "+ChatColor.DARK_AQUA+"("+ChatColor.DARK_GREEN+(maxmemmb-freememmb)+"/"+maxmemmb+" MB"+ChatColor.DARK_AQUA+")"+ChatColor.RESET);
+				sender.sendMessage(ChatColor.GOLD+"RAM: "+ChatColor.RED+df.format((maxmemmb-freememmb)*100/maxmemmb)+"% "+ChatColor.DARK_AQUA+"("+ChatColor.DARK_GREEN+(maxmemmb-freememmb)+"/"+maxmemmb+" MB"+ChatColor.DARK_AQUA+")"+ChatColor.RESET);
 				//hard drive
 				File file = new File(".");
 				long maxspacegb = file.getTotalSpace()/1024/1024/1024;
 				long freespacegb = file.getFreeSpace()/1024/1024/1024;
-				sender.sendMessage(ChatColor.GOLD+"Disk usage: "+ChatColor.RED+df.format((maxspacegb-freespacegb)*100/maxspacegb)+"% "+ChatColor.DARK_AQUA+"("+ChatColor.DARK_GREEN+(maxspacegb-freespacegb)+"/"+maxspacegb+" GB"+ChatColor.DARK_AQUA+")"+ChatColor.RESET);
+				sender.sendMessage(ChatColor.GOLD+"HDD: "+ChatColor.RED+df.format((maxspacegb-freespacegb)*100/maxspacegb)+"% "+ChatColor.DARK_AQUA+"("+ChatColor.DARK_GREEN+(maxspacegb-freespacegb)+"/"+maxspacegb+" GB"+ChatColor.DARK_AQUA+")"+ChatColor.RESET);
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("save")) {
 				//save
@@ -158,15 +175,15 @@ public class CommandsHandler implements CommandExecutor {
 			} else if ((args.length == 2 && args[0].equalsIgnoreCase("regenworld"))) {
 				//regen world
 				if (Bukkit.getPluginManager().getPlugin("WorldEdit") == null) {
-					plugin.sendMessage(sender, "[AutoSaveWorld] You need WorldEdit installed to do that");
+					plugin.sendMessage(sender, "[AutoSaveWorld] Для этого, необходимо установить WorldEdit");
 					return true;
 				}
 				if (Bukkit.getWorld(args[1]) == null) {
-					plugin.sendMessage(sender, "[AutoSaveWorld] This world doesn't exist");
+					plugin.sendMessage(sender, "[AutoSaveWorld] Этот мир не доступен");
 					return true;
 				}
 				if (plugin.worldregenInProcess) {
-					plugin.sendMessage(sender, "[AutoSaveWorld] Please wait before previous world regeneration is finished");
+					plugin.sendMessage(sender, "[AutoSaveWorld] Пожалуйста подождите пока текущая регенерация завершится");
 					return true;
 				}
 				plugin.worldregencopyThread.startworldregen(args[1]);
@@ -175,17 +192,17 @@ public class CommandsHandler implements CommandExecutor {
 				//reload
 				config.load();
 				configmsg.loadmsg();
-				plugin.sendMessage(sender, "[AutoSaveWorld] All configurations reloaded");
+				plugin.sendMessage(sender, "[AutoSaveWorld] Все конфигурации перезагружены");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("reloadconfig")) {
 				//reload config
 				config.load();
-				plugin.sendMessage(sender,"[AutoSaveWorld] Main configuration reloaded");
+				plugin.sendMessage(sender,"[AutoSaveWorld] Главная конфигурация перезагружена");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("reloadmsg")) {
 				//reload messages
 				configmsg.loadmsg();
-				plugin.sendMessage(sender, "[AutoSaveWorld] Messages file reloaded");
+				plugin.sendMessage(sender, "[AutoSaveWorld] Файл сообщений перезагружен");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("version")) {
 				//version
@@ -193,37 +210,37 @@ public class CommandsHandler implements CommandExecutor {
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("info")) {
 				//info
-				plugin.sendMessage(sender,"&9======AutoSaveWorld Info & Status======");
+				plugin.sendMessage(sender,"&9======AutoSaveWorld Инфа & Статус======");
 				if (config.saveEnabled) {
-					plugin.sendMessage(sender, "&2AutoSave is active");
-					plugin.sendMessage(sender, "&2Last save time: " + plugin.LastSave);
+					plugin.sendMessage(sender, "&2AutoSave активирован");
+					plugin.sendMessage(sender, "&2Посл. сохранение: " + plugin.LastSave);
 				} else {
-					plugin.sendMessage(sender, "&2AutoSave is inactive");
+					plugin.sendMessage(sender, "&2AutoSave не активирован");
 				}
 				if (config.backupEnabled) {
-					plugin.sendMessage(sender, "&2AutoBackup is active");
-					plugin.sendMessage(sender, "&2Last backup time: " + plugin.LastBackup);
+					plugin.sendMessage(sender, "&2AutoBackup активирован");
+					plugin.sendMessage(sender, "&2Посл. бекап: " + plugin.LastBackup);
 				} else {
-					plugin.sendMessage(sender, "&2AutoBackup is inactive");
+					plugin.sendMessage(sender, "&2AutoBackup не активирован");
 				}
 				plugin.sendMessage(sender,"&9====================================");
 				return true;
 			} else if ((args.length >= 1 && args[0].equalsIgnoreCase("locale"))) {
 				//locale loader
 				if (args.length == 2 && args[1].equalsIgnoreCase("available")) {
-					plugin.sendMessage(sender, "Available locales: "+ localeChanger.getAvailableLocales());
+					plugin.sendMessage(sender, "Доступные языки: "+ localeChanger.getAvailableLocales());
 					return true;
 				} else if (args.length == 2 && args[1].equalsIgnoreCase("load")) {
-					plugin.sendMessage(sender,"You should specify a locale to load (get available locales using /asw locale available command)");
+					plugin.sendMessage(sender,"Вам следует выбрать язык для загрузки");
 					return true;
 				} else if (args.length == 3 && args[1].equalsIgnoreCase("load")) {
 					if (localeChanger.getAvailableLocales().contains(args[2])) {
-						plugin.sendMessage(sender, "Loading locale " + args[2]);
+						plugin.sendMessage(sender, "Загрузка языка " + args[2]);
 						localeChanger.loadLocale(args[2]);
-						plugin.sendMessage(sender, "Loaded locale " + args[2]);
+						plugin.sendMessage(sender, "Загрузка языка " + args[2]);
 						return true;
 					} else {
-						plugin.sendMessage(sender, "Locale " + args[2] + " is not available");
+						plugin.sendMessage(sender, "Язык " + args[2] + " не доступен");
 						return true;
 					}
 				}
