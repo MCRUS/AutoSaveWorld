@@ -108,7 +108,7 @@ public class CommandsHandler implements CommandExecutor {
 				plugin.sendMessage(sender, "&f/asw restart&7 - &3Перезагружает сервер");
 				plugin.sendMessage(sender, "&f/asw regenworld {world}&7 - &3Регенерирует мир");
 				plugin.sendMessage(sender, "&f/asw reload&7 - &3Перезагружает все конфиги :)");
-				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Перезагружает оснвоной config.yml");
+				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Перезагружает основной config.yml");
 				plugin.sendMessage(sender, "&f/asw reloadmsg&7 - &3Перезагружает файл с сообщениями configmsg.yml");
 				plugin.sendMessage(sender, "&f/asw locale&7 - &3Показывает текущий язык плагина");
 				plugin.sendMessage(sender, "&f/asw locale available&7 - &3Показывает доступные языки");
