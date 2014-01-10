@@ -101,15 +101,15 @@ public class CommandsHandler implements CommandExecutor {
 				plugin.sendMessage(sender, "&f/asw pmanager reload {pluginname}&7 - &3Перезагружает (unload затем load) плагин {pluginname}");
 				plugin.sendMessage(sender, "&f/asw save&7 - &3Сохраняет все миры и игроков");
 				plugin.sendMessage(sender, "&f/save&7 - &3То же, что /asw save");
-				plugin.sendMessage(sender, "&f/asw backup&7 - &3Бекапит миры из config.yml (* - все миры) и плагиы (если указаны)");
+				plugin.sendMessage(sender, "&f/asw backup&7 - &3Создаёт резервные копии миров из config.yml (* - все миры) и плагинов (если таковые указаны)");
 				plugin.sendMessage(sender, "&f/backup&7 - &3То же, что /asw backup");
 				plugin.sendMessage(sender, "&f/asw purge&7 - &3Отчищает информацию из плагинов о неактивных игроках");
 				plugin.sendMessage(sender, "&f/purge&7 - &3То же, что /asw purge");
 				plugin.sendMessage(sender, "&f/asw restart&7 - &3Перезагружает сервер");
 				plugin.sendMessage(sender, "&f/asw regenworld {world}&7 - &3Регенерирует мир");
 				plugin.sendMessage(sender, "&f/asw reload&7 - &3Перезагружает все конфиги :)");
-				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Перезагружает (config.yml)");
-				plugin.sendMessage(sender, "&f/asw reloadmsg&7 - &3Перезагружает (configmsg.yml)");
+				plugin.sendMessage(sender, "&f/asw reloadconfig&7 - &3Перезагружает оснвоной config.yml");
+				plugin.sendMessage(sender, "&f/asw reloadmsg&7 - &3Перезагружает файл с сообщениями configmsg.yml");
 				plugin.sendMessage(sender, "&f/asw locale&7 - &3Показывает текущий язык плагина");
 				plugin.sendMessage(sender, "&f/asw locale available&7 - &3Показывает доступные языки");
 				plugin.sendMessage(sender, "&f/asw locale load {locale}&7 - &3Устанавливает язык плагина");
@@ -128,10 +128,10 @@ public class CommandsHandler implements CommandExecutor {
 				plugin.pmanager.handlePluginManagerCommand(sender, args[1], sb.toString());
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("forcegc")) {
-				plugin.sendMessage(sender, "&9Наинаю GC");
+				plugin.sendMessage(sender, "&9Начинаю GC");
 				System.gc();
 				System.gc();
-				plugin.sendMessage(sender, "&9GC вероятно завершено");
+				plugin.sendMessage(sender, "&9GC вероятно завершено...");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("serverstatus")) {
 				DecimalFormat df = new DecimalFormat("0.00");
@@ -142,7 +142,7 @@ public class CommandsHandler implements CommandExecutor {
 					if (cpuusage > 0) {
 						sender.sendMessage(ChatColor.GOLD+"CPU: "+ChatColor.RED+df.format(cpuusage)+"%");
 					} else {
-						sender.sendMessage(ChatColor.GOLD+"CPU: "+ChatColor.RED+"not available");
+						sender.sendMessage(ChatColor.GOLD+"CPU: "+ChatColor.RED+"не доступно");
 					}
 				} catch (Exception e) {}
 				//memory
@@ -183,7 +183,7 @@ public class CommandsHandler implements CommandExecutor {
 					return true;
 				}
 				if (plugin.worldregenInProcess) {
-					plugin.sendMessage(sender, "[AutoSaveWorld] Пожалуйста подождите пока текущая регенерация завершится");
+					plugin.sendMessage(sender, "[AutoSaveWorld] Пожалуйста подождите, пока текущая регенерация завершится");
 					return true;
 				}
 				plugin.worldregencopyThread.startworldregen(args[1]);
@@ -202,7 +202,7 @@ public class CommandsHandler implements CommandExecutor {
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("reloadmsg")) {
 				//reload messages
 				configmsg.loadmsg();
-				plugin.sendMessage(sender, "[AutoSaveWorld] Файл сообщений перезагружен");
+				plugin.sendMessage(sender, "[AutoSaveWorld] Файл с сообщениями перезагружен");
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("version")) {
 				//version
@@ -210,7 +210,7 @@ public class CommandsHandler implements CommandExecutor {
 				return true;
 			} else if (args.length == 1 && args[0].equalsIgnoreCase("info")) {
 				//info
-				plugin.sendMessage(sender,"&9======AutoSaveWorld Инфа & Статус======");
+				plugin.sendMessage(sender,"&9======AutoSaveWorld Информация & Статус======");
 				if (config.saveEnabled) {
 					plugin.sendMessage(sender, "&2AutoSave активирован");
 					plugin.sendMessage(sender, "&2Посл. сохранение: " + plugin.LastSave);
